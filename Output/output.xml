@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 5.0.1 (Python 3.10.7 on win32)" generated="20221128 12:58:37.314" rpa="false" schemaversion="3">
+<robot generator="Robot 5.0.1 (Python 3.10.7 on win32)" generated="20221128 14:11:31.126" rpa="false" schemaversion="3">
 <suite id="s1" name="Clock-App" source="C:\Users\mujtaba.afzal\PycharmProjects\pythonProject\Tests\clock-app.robot">
-<test id="s1-t1" name="OPEN_APPLICATION" line="6">
-<kw name="Open clock" library="clock-app-variables">
+<test id="s1-t1" name="OPEN_APPLICATION" line="7">
+<kw name="Open clock" library="common">
 <doc>Opens clock app</doc>
 <kw name="Open Application" library="AppiumLibrary">
 <arg>${REMOTE_URL}</arg>
@@ -19,52 +19,175 @@ Please check https://github.com/appium/appium/blob/master/docs/en/writing-runnin
 | *Option*            | *Man.* | *Description*     |
 | remote_url          | Yes    | Appium server url |
 | alias               | no     | alias             |</doc>
-<msg timestamp="20221128 12:58:38.619" level="INFO">Could not connect to port 4723 on host 127.0.0.1</msg>
-<msg timestamp="20221128 12:58:38.619" level="INFO">Could not get IP address for host: 127.0.0.1</msg>
-<msg timestamp="20221128 12:58:40.676" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x0000026C24DA11E0&gt;: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /wd/hub/session</msg>
-<msg timestamp="20221128 12:58:42.694" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x0000026C24DA14B0&gt;: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /wd/hub/session</msg>
-<kw name="Capture Page Screenshot" library="AppiumLibrary">
-<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
-<status status="FAIL" starttime="20221128 12:58:44.720" endtime="20221128 12:58:44.720"/>
+<status status="PASS" starttime="20221128 14:11:31.351" endtime="20221128 14:11:49.655"/>
 </kw>
-<msg timestamp="20221128 12:58:44.720" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: Execution terminated by signal</msg>
-<status status="FAIL" starttime="20221128 12:58:37.599" endtime="20221128 12:58:44.720"/>
-</kw>
-<status status="FAIL" starttime="20221128 12:58:37.599" endtime="20221128 12:58:44.720"/>
+<status status="PASS" starttime="20221128 14:11:31.351" endtime="20221128 14:11:49.655"/>
 </kw>
 <kw name="Page Should Contain Element" library="AppiumLibrary">
 <arg>${APP_HEADER}</arg>
 <doc>Verifies that current page contains `locator` element.</doc>
-<status status="NOT RUN" starttime="20221128 12:58:44.724" endtime="20221128 12:58:44.724"/>
+<msg timestamp="20221128 14:11:51.076" level="INFO">Current page contains element 'id = com.google.android.deskclock:id/action_bar_title'.</msg>
+<status status="PASS" starttime="20221128 14:11:49.656" endtime="20221128 14:11:51.076"/>
 </kw>
 <kw name="Element Text Should Be" library="AppiumLibrary">
 <arg>${APP_HEADER}</arg>
 <arg>Clock</arg>
 <doc>Verifies element identified by ``locator`` exactly contains text ``expected``.</doc>
-<status status="NOT RUN" starttime="20221128 12:58:44.724" endtime="20221128 12:58:44.724"/>
+<msg timestamp="20221128 14:11:51.079" level="INFO">Verifying element 'id = com.google.android.deskclock:id/action_bar_title' contains exactly text 'Clock'.</msg>
+<status status="PASS" starttime="20221128 14:11:51.077" endtime="20221128 14:11:51.760"/>
 </kw>
-<status status="FAIL" starttime="20221128 12:58:37.599" endtime="20221128 12:58:44.724">Execution terminated by signal</status>
+<status status="PASS" starttime="20221128 14:11:31.350" endtime="20221128 14:11:51.761"/>
 </test>
-<test id="s1-t2" name="VERIFY_TABS_WORKING" line="10">
-<tag>robot:exit</tag>
-<status status="FAIL" starttime="20221128 12:58:44.724" endtime="20221128 12:58:44.724">Test execution stopped due to a fatal error.</status>
+<test id="s1-t2" name="VERIFY_TABS_WORKING" line="11">
+<kw name="Go To Tab" library="home">
+<arg>${ALARM_TAB}</arg>
+<arg>Alarm</arg>
+<doc>Clicks on tab and verify tab opens</doc>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>${tab_locator}</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20221128 14:11:51.766" level="INFO">Clicking element 'id = com.google.android.deskclock:id/tab_menu_alarm'.</msg>
+<status status="PASS" starttime="20221128 14:11:51.764" endtime="20221128 14:11:53.373"/>
+</kw>
+<kw name="Element Attribute Should Match" library="AppiumLibrary">
+<arg>${tab_locator}</arg>
+<arg>selected</arg>
+<arg>True</arg>
+<doc>Verify that an attribute of an element matches the expected criteria.</doc>
+<msg timestamp="20221128 14:11:53.516" level="INFO">Element 'id = com.google.android.deskclock:id/tab_menu_alarm' attribute 'selected' is 'True' </msg>
+<status status="PASS" starttime="20221128 14:11:53.373" endtime="20221128 14:11:53.516"/>
+</kw>
+<kw name="Element Text Should Be" library="AppiumLibrary">
+<arg>${APP_HEADER}</arg>
+<arg>${tab_name}</arg>
+<doc>Verifies element identified by ``locator`` exactly contains text ``expected``.</doc>
+<msg timestamp="20221128 14:11:53.518" level="INFO">Verifying element 'id = com.google.android.deskclock:id/action_bar_title' contains exactly text 'Alarm'.</msg>
+<status status="PASS" starttime="20221128 14:11:53.516" endtime="20221128 14:11:53.623"/>
+</kw>
+<status status="PASS" starttime="20221128 14:11:51.763" endtime="20221128 14:11:53.624"/>
+</kw>
+<kw name="Go To Tab" library="home">
+<arg>${STOPWATCH_TAB}</arg>
+<arg>Stopwatch</arg>
+<doc>Clicks on tab and verify tab opens</doc>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>${tab_locator}</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20221128 14:11:53.627" level="INFO">Clicking element 'id = com.google.android.deskclock:id/tab_menu_stopwatch'.</msg>
+<status status="PASS" starttime="20221128 14:11:53.625" endtime="20221128 14:11:53.909"/>
+</kw>
+<kw name="Element Attribute Should Match" library="AppiumLibrary">
+<arg>${tab_locator}</arg>
+<arg>selected</arg>
+<arg>True</arg>
+<doc>Verify that an attribute of an element matches the expected criteria.</doc>
+<msg timestamp="20221128 14:11:56.058" level="INFO">Element 'id = com.google.android.deskclock:id/tab_menu_stopwatch' attribute 'selected' is 'True' </msg>
+<status status="PASS" starttime="20221128 14:11:53.909" endtime="20221128 14:11:56.058"/>
+</kw>
+<kw name="Element Text Should Be" library="AppiumLibrary">
+<arg>${APP_HEADER}</arg>
+<arg>${tab_name}</arg>
+<doc>Verifies element identified by ``locator`` exactly contains text ``expected``.</doc>
+<msg timestamp="20221128 14:11:56.060" level="INFO">Verifying element 'id = com.google.android.deskclock:id/action_bar_title' contains exactly text 'Stopwatch'.</msg>
+<status status="PASS" starttime="20221128 14:11:56.058" endtime="20221128 14:11:56.188"/>
+</kw>
+<status status="PASS" starttime="20221128 14:11:53.624" endtime="20221128 14:11:56.189"/>
+</kw>
+<kw name="Go To Tab" library="home">
+<arg>${TIMER_TAB}</arg>
+<arg>Timer</arg>
+<doc>Clicks on tab and verify tab opens</doc>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>${tab_locator}</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20221128 14:11:56.191" level="INFO">Clicking element 'id = com.google.android.deskclock:id/tab_menu_timer'.</msg>
+<status status="PASS" starttime="20221128 14:11:56.190" endtime="20221128 14:11:56.462"/>
+</kw>
+<kw name="Element Attribute Should Match" library="AppiumLibrary">
+<arg>${tab_locator}</arg>
+<arg>selected</arg>
+<arg>True</arg>
+<doc>Verify that an attribute of an element matches the expected criteria.</doc>
+<msg timestamp="20221128 14:11:57.929" level="INFO">Element 'id = com.google.android.deskclock:id/tab_menu_timer' attribute 'selected' is 'True' </msg>
+<status status="PASS" starttime="20221128 14:11:56.462" endtime="20221128 14:11:57.929"/>
+</kw>
+<kw name="Element Text Should Be" library="AppiumLibrary">
+<arg>${APP_HEADER}</arg>
+<arg>${tab_name}</arg>
+<doc>Verifies element identified by ``locator`` exactly contains text ``expected``.</doc>
+<msg timestamp="20221128 14:11:57.931" level="INFO">Verifying element 'id = com.google.android.deskclock:id/action_bar_title' contains exactly text 'Timer'.</msg>
+<status status="PASS" starttime="20221128 14:11:57.929" endtime="20221128 14:11:58.018"/>
+</kw>
+<status status="PASS" starttime="20221128 14:11:56.189" endtime="20221128 14:11:58.018"/>
+</kw>
+<kw name="Go To Tab" library="home">
+<arg>${CLOCK_TAB}</arg>
+<arg>Clock</arg>
+<doc>Clicks on tab and verify tab opens</doc>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>${tab_locator}</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20221128 14:11:58.022" level="INFO">Clicking element 'id = com.google.android.deskclock:id/tab_menu_clock'.</msg>
+<status status="PASS" starttime="20221128 14:11:58.019" endtime="20221128 14:11:58.282"/>
+</kw>
+<kw name="Element Attribute Should Match" library="AppiumLibrary">
+<arg>${tab_locator}</arg>
+<arg>selected</arg>
+<arg>True</arg>
+<doc>Verify that an attribute of an element matches the expected criteria.</doc>
+<msg timestamp="20221128 14:11:59.386" level="INFO">Element 'id = com.google.android.deskclock:id/tab_menu_clock' attribute 'selected' is 'True' </msg>
+<status status="PASS" starttime="20221128 14:11:58.282" endtime="20221128 14:11:59.386"/>
+</kw>
+<kw name="Element Text Should Be" library="AppiumLibrary">
+<arg>${APP_HEADER}</arg>
+<arg>${tab_name}</arg>
+<doc>Verifies element identified by ``locator`` exactly contains text ``expected``.</doc>
+<msg timestamp="20221128 14:11:59.388" level="INFO">Verifying element 'id = com.google.android.deskclock:id/action_bar_title' contains exactly text 'Clock'.</msg>
+<status status="PASS" starttime="20221128 14:11:59.386" endtime="20221128 14:11:59.466"/>
+</kw>
+<status status="PASS" starttime="20221128 14:11:58.019" endtime="20221128 14:11:59.466"/>
+</kw>
+<kw name="Go To Tab" library="home">
+<arg>${BEDTIME_TAB}</arg>
+<arg>Bedtime</arg>
+<doc>Clicks on tab and verify tab opens</doc>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>${tab_locator}</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20221128 14:11:59.469" level="INFO">Clicking element 'id = com.google.android.deskclock:id/tab_menu_bedtime'.</msg>
+<status status="PASS" starttime="20221128 14:11:59.467" endtime="20221128 14:11:59.653"/>
+</kw>
+<kw name="Element Attribute Should Match" library="AppiumLibrary">
+<arg>${tab_locator}</arg>
+<arg>selected</arg>
+<arg>True</arg>
+<doc>Verify that an attribute of an element matches the expected criteria.</doc>
+<msg timestamp="20221128 14:12:01.339" level="INFO">Element 'id = com.google.android.deskclock:id/tab_menu_bedtime' attribute 'selected' is 'True' </msg>
+<status status="PASS" starttime="20221128 14:11:59.653" endtime="20221128 14:12:01.339"/>
+</kw>
+<kw name="Element Text Should Be" library="AppiumLibrary">
+<arg>${APP_HEADER}</arg>
+<arg>${tab_name}</arg>
+<doc>Verifies element identified by ``locator`` exactly contains text ``expected``.</doc>
+<msg timestamp="20221128 14:12:01.341" level="INFO">Verifying element 'id = com.google.android.deskclock:id/action_bar_title' contains exactly text 'Bedtime'.</msg>
+<status status="PASS" starttime="20221128 14:12:01.339" endtime="20221128 14:12:01.462"/>
+</kw>
+<status status="PASS" starttime="20221128 14:11:59.467" endtime="20221128 14:12:01.462"/>
+</kw>
+<status status="PASS" starttime="20221128 14:11:51.762" endtime="20221128 14:12:01.463"/>
 </test>
-<status status="FAIL" starttime="20221128 12:58:37.314" endtime="20221128 12:58:44.724"/>
+<status status="PASS" starttime="20221128 14:11:31.129" endtime="20221128 14:12:01.464"/>
 </suite>
 <statistics>
 <total>
-<stat pass="0" fail="2" skip="0">All Tests</stat>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="0" fail="1" skip="0" info="combined" combined="NOT robot:exit">NOT robot:exit</stat>
 </tag>
 <suite>
-<stat pass="0" fail="2" skip="0" id="s1" name="Clock-App">Clock-App</stat>
+<stat pass="2" fail="0" skip="0" id="s1" name="Clock-App">Clock-App</stat>
 </suite>
 </statistics>
 <errors>
-<msg timestamp="20221128 12:58:40.676" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x0000026C24DA11E0&gt;: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /wd/hub/session</msg>
-<msg timestamp="20221128 12:58:42.694" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x0000026C24DA14B0&gt;: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /wd/hub/session</msg>
-<msg timestamp="20221128 12:58:44.720" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: Execution terminated by signal</msg>
 </errors>
 </robot>

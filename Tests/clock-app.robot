@@ -1,6 +1,7 @@
 *** Settings ***
 Library    AppiumLibrary
-Resource   ../Resources/clock-app-variables.resource
+Resource  ../Resources/PageObjectModel/KeywordDefinationFiles/common.robot
+Resource  ../Resources/PageObjectModel/KeywordDefinationFiles/home.robot
 
 *** Test Cases ***
 OPEN_APPLICATION
